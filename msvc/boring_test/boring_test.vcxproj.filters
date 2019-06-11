@@ -13,32 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\boring">
-      <UniqueIdentifier>{d1a66293-7267-43e0-bc0d-464160187092}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\boring.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\boring\list.h">
-      <Filter>Header Files\boring</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\boring\tree.h">
-      <Filter>Header Files\boring</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\boring\alloc.h">
-      <Filter>Header Files\boring</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\src\lib\list.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\lib\tree.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\lib\alloc.c">
+    <ClCompile Include="..\..\src\test\boring_test.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
