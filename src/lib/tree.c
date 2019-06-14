@@ -299,3 +299,10 @@ bTreeFree
    bTreeDestroy(tree->rootNode);
    bFree(tree);
 }
+
+intptr_t
+bTreeBinCmp
+(uintptr_t left, uintptr_t right)
+{
+   return right - left;
+}

@@ -61,13 +61,6 @@ testList
    bListDestroy(list);
 }
 
-intptr_t
-testTreeCmp
-(uintptr_t left, uintptr_t right)
-{
-   return right - left;
-}
-
 void
 testTree
 (void)
@@ -81,10 +74,10 @@ testTree
           /   \   /  \
          1     3 7    14 */
 
-   testTree = bTreeCreate(testTreeCmp);
+   testTree = bTreeCreate(bTreeBinCmp);
 
    assert(testTree->rootNode == NULL);
-   assert(testTree->cmp == testTreeCmp);
+   assert(testTree->cmp == bTreeBinCmp);
 
    testNode = bTreeInsert(testTree, 5);
 
@@ -150,12 +143,92 @@ testTree
    bTreeFree(testTree);
 }
 
+void
+testAVL
+(void)
+{
+   tree_t *avlTree;
+   node_t *testNode;
+
+   avlTree = bTreeCreate(bAVLBinCmp);
+
+   testNode = bAVLInsert(avlTree, 5);
+
+   assert(bNodeGetAVL(testNode)->label == 5);
+
+   testNode = bAVLInsert(avlTree, 10);
+
+   assert(bNodeGetAVL(testNode)->label == 10);
+   assert(bNodeGetAVL(testNode->parent)->label == 5);
+
+   /* single left rotation */
+   testNode = bAVLInsert(avlTree, 14);
+
+   assert(bNodeGetAVL(avlTree->rootNode)->label == 10);
+   assert(bNodeGetAVL(avlTree->rootNode->left)->label == 5);
+   assert(bNodeGetAVL(avlTree->rootNode->right)->label == 14);
+
+   /*          10
+              /   \
+            5      14       */
+
+   /* single right rotation */
+   testNode = bAVLInsert(avlTree, 3);
+   bAVLInsert(avlTree, 2);
+
+   assert(bNodeGetAVL(testNode->parent)->label == 10);
+   assert(bNodeGetAVL(testNode->right)->label == 5);
+   assert(bNodeGetAVL(testNode->left)->label == 2);
+   assert(bNodeGetAVL(testNode)->label == 3);
+
+   /*          10
+              /   \
+            3      14       
+          /   \
+         2     5          */
+
+   /* double rotation */
+   testNode = bAVLInsert(avlTree, 6);
+
+   /* steps:
+
+               10
+              /   \
+            3      14       
+          /   \
+         2     5          
+                \
+                 6
+
+
+               10
+              /   \
+            5      14       
+          /   \
+         3     6          
+        /       
+       2
+              
+            5 
+          /   \
+         3     10          
+        /     /  \
+       2     6    14   */
+
+   assert(bNodeGetAVL(testNode->parent)->label == 10);
+   assert(bNodeGetAVL(testNode->parent->parent)->label == 5);
+   assert(testNode->parent->parent == avlTree->rootNode);
+
+   bAVLTreeFree(avlTree);
+}
+
 int
 main
 (int argc, char **argv)
 {
    testList();
    testTree();
+   testAVL();
 
    return 0;
 }

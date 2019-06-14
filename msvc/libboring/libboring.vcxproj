@@ -133,11 +133,13 @@
   <ItemGroup>
     <ClInclude Include="..\..\include\boring.h" />
     <ClInclude Include="..\..\include\boring\alloc.h" />
+    <ClInclude Include="..\..\include\boring\avl.h" />
     <ClInclude Include="..\..\include\boring\list.h" />
     <ClInclude Include="..\..\include\boring\tree.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\lib\alloc.c" />
+    <ClCompile Include="..\..\src\lib\avl.c" />
     <ClCompile Include="..\..\src\lib\list.c" />
     <ClCompile Include="..\..\src\lib\tree.c" />
   </ItemGroup>

@@ -30,6 +30,9 @@
     <ClInclude Include="..\..\include\boring\alloc.h">
       <Filter>Header Files\boring</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\boring\avl.h">
+      <Filter>Header Files\boring</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\lib\list.c">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\lib\alloc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\lib\avl.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -44,4 +44,6 @@ void bNodeDelete(node_t *node);
 void bTreeDestroy(node_t *node);
 void bTreeFree(tree_t *tree);
 
+intptr_t bTreeBinCmp(uintptr_t left, uintptr_t right);
+
 #endif
