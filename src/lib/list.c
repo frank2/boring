@@ -23,6 +23,9 @@ bListDestroy
 
    entry = list->front;
 
+   if (entry == NULL)
+      return;
+
    while (entry->next != NULL)
    {
       entry = entry->next;

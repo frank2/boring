@@ -222,6 +222,61 @@ testAVL
    bAVLTreeFree(avlTree);
 }
 
+void
+testHash
+(void)
+{
+   hash_table_t *table;
+   hash_entry_t *entry;
+
+   table = bHashTableCreate(BORING_HASH_SMALL, bHashString);
+
+   bHashTableSet(table, "one", 1);
+   bHashTableSet(table, "two", 2);
+   bHashTableSet(table, "three", 3);
+   bHashTableSet(table, "four", 4);
+   bHashTableSet(table, "five", 5);
+   bHashTableSet(table, "six", 6);
+   bHashTableSet(table, "seven", 7);
+   bHashTableSet(table, "eight", 8);
+   bHashTableSet(table, "nine", 9);
+   bHashTableSet(table, "ten", 10);
+   bHashTableSet(table, "eleven", 11);
+   bHashTableSet(table, "twelve", 12);
+
+   entry = bHashTableGet(table, "one");
+
+   assert(entry != NULL);
+   assert(entry->label == 1);
+
+   entry = bHashTableGet(table, "two");
+
+   assert(entry != NULL);
+   assert(entry->label == 2);
+
+   entry = bHashTableGet(table, "three");
+
+   assert(entry != NULL);
+   assert(entry->label == 3);
+
+   entry = bHashTableGet(table, "four");
+
+   assert(entry != NULL);
+   assert(entry->label == 4);
+
+   entry = bHashTableGet(table, "thirteen");
+
+   assert(entry == NULL);
+
+   bHashTableSet(table, "one", 0);
+   entry = bHashTableGet(table, "one");
+
+   assert(entry->label != 1);
+   assert(entry->label == 0);
+
+   bHashTableFree(table);
+}
+
 int
 main
 (int argc, char **argv)
@@ -229,6 +284,7 @@ main
    testList();
    testTree();
    testAVL();
+   testHash();
 
    return 0;
 }

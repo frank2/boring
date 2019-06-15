@@ -7,7 +7,11 @@ bAlloc
 #ifdef WIN32
    return HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, size);
 #else
-   return malloc(size);
+   void *buffer;
+   
+   buffer = malloc(size);
+   memset(buffer, 0, size);
+   return buffer;
 #endif
 }
 
